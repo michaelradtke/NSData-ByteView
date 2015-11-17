@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		27E699A91BF8B70500664C5B /* NSData+ByteView.h in Headers */ = {isa = PBXBuildFile; fileRef = 27E699A81BF8B70500664C5B /* NSData+ByteView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		27E699B01BF8B70500664C5B /* NSData+ByteView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E699A51BF8B70500664C5B /* NSData+ByteView.framework */; };
-		27E699B51BF8B70500664C5B /* NSData_ByteViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E699B41BF8B70500664C5B /* NSData_ByteViewTests.swift */; };
+		27E699B01BF8B70500664C5B /* NSData_ByteView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E699A51BF8B70500664C5B /* NSData_ByteView.framework */; };
+		27E699B51BF8B70500664C5B /* NSData+ByteViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E699B41BF8B70500664C5B /* NSData+ByteViewTests.swift */; };
+		27E699C01BF8B74100664C5B /* NSData+ByteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E699BF1BF8B74100664C5B /* NSData+ByteView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -23,12 +24,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		27E699A51BF8B70500664C5B /* NSData+ByteView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "NSData+ByteView.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		27E699A51BF8B70500664C5B /* NSData_ByteView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NSData_ByteView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27E699A81BF8B70500664C5B /* NSData+ByteView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+ByteView.h"; sourceTree = "<group>"; };
 		27E699AA1BF8B70500664C5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		27E699AF1BF8B70500664C5B /* NSData+ByteViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "NSData+ByteViewTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		27E699B41BF8B70500664C5B /* NSData_ByteViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSData_ByteViewTests.swift; sourceTree = "<group>"; };
+		27E699AF1BF8B70500664C5B /* NSData_ByteViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NSData_ByteViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		27E699B41BF8B70500664C5B /* NSData+ByteViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSData+ByteViewTests.swift"; sourceTree = "<group>"; };
 		27E699B61BF8B70500664C5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		27E699BF1BF8B74100664C5B /* NSData+ByteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSData+ByteView.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,7 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27E699B01BF8B70500664C5B /* NSData+ByteView.framework in Frameworks */,
+				27E699B01BF8B70500664C5B /* NSData_ByteView.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,8 +64,8 @@
 		27E699A61BF8B70500664C5B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				27E699A51BF8B70500664C5B /* NSData+ByteView.framework */,
-				27E699AF1BF8B70500664C5B /* NSData+ByteViewTests.xctest */,
+				27E699A51BF8B70500664C5B /* NSData_ByteView.framework */,
+				27E699AF1BF8B70500664C5B /* NSData_ByteViewTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -73,6 +75,7 @@
 			children = (
 				27E699A81BF8B70500664C5B /* NSData+ByteView.h */,
 				27E699AA1BF8B70500664C5B /* Info.plist */,
+				27E699BF1BF8B74100664C5B /* NSData+ByteView.swift */,
 			);
 			path = "NSData+ByteView";
 			sourceTree = "<group>";
@@ -80,7 +83,7 @@
 		27E699B31BF8B70500664C5B /* NSData+ByteViewTests */ = {
 			isa = PBXGroup;
 			children = (
-				27E699B41BF8B70500664C5B /* NSData_ByteViewTests.swift */,
+				27E699B41BF8B70500664C5B /* NSData+ByteViewTests.swift */,
 				27E699B61BF8B70500664C5B /* Info.plist */,
 			);
 			path = "NSData+ByteViewTests";
@@ -100,9 +103,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		27E699A41BF8B70500664C5B /* NSData+ByteView */ = {
+		27E699A41BF8B70500664C5B /* NSData_ByteView */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 27E699B91BF8B70500664C5B /* Build configuration list for PBXNativeTarget "NSData+ByteView" */;
+			buildConfigurationList = 27E699B91BF8B70500664C5B /* Build configuration list for PBXNativeTarget "NSData_ByteView" */;
 			buildPhases = (
 				27E699A01BF8B70500664C5B /* Sources */,
 				27E699A11BF8B70500664C5B /* Frameworks */,
@@ -113,14 +116,14 @@
 			);
 			dependencies = (
 			);
-			name = "NSData+ByteView";
+			name = NSData_ByteView;
 			productName = "NSData+ByteView";
-			productReference = 27E699A51BF8B70500664C5B /* NSData+ByteView.framework */;
+			productReference = 27E699A51BF8B70500664C5B /* NSData_ByteView.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		27E699AE1BF8B70500664C5B /* NSData+ByteViewTests */ = {
+		27E699AE1BF8B70500664C5B /* NSData_ByteViewTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 27E699BC1BF8B70500664C5B /* Build configuration list for PBXNativeTarget "NSData+ByteViewTests" */;
+			buildConfigurationList = 27E699BC1BF8B70500664C5B /* Build configuration list for PBXNativeTarget "NSData_ByteViewTests" */;
 			buildPhases = (
 				27E699AB1BF8B70500664C5B /* Sources */,
 				27E699AC1BF8B70500664C5B /* Frameworks */,
@@ -131,9 +134,9 @@
 			dependencies = (
 				27E699B21BF8B70500664C5B /* PBXTargetDependency */,
 			);
-			name = "NSData+ByteViewTests";
+			name = NSData_ByteViewTests;
 			productName = "NSData+ByteViewTests";
-			productReference = 27E699AF1BF8B70500664C5B /* NSData+ByteViewTests.xctest */;
+			productReference = 27E699AF1BF8B70500664C5B /* NSData_ByteViewTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -166,8 +169,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				27E699A41BF8B70500664C5B /* NSData+ByteView */,
-				27E699AE1BF8B70500664C5B /* NSData+ByteViewTests */,
+				27E699A41BF8B70500664C5B /* NSData_ByteView */,
+				27E699AE1BF8B70500664C5B /* NSData_ByteViewTests */,
 			);
 		};
 /* End PBXProject section */
@@ -194,6 +197,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27E699C01BF8B74100664C5B /* NSData+ByteView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,7 +205,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27E699B51BF8B70500664C5B /* NSData_ByteViewTests.swift in Sources */,
+				27E699B51BF8B70500664C5B /* NSData+ByteViewTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,7 +214,7 @@
 /* Begin PBXTargetDependency section */
 		27E699B21BF8B70500664C5B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 27E699A41BF8B70500664C5B /* NSData+ByteView */;
+			target = 27E699A41BF8B70500664C5B /* NSData_ByteView */;
 			targetProxy = 27E699B11BF8B70500664C5B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -253,7 +257,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
@@ -294,7 +298,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -305,6 +309,7 @@
 		27E699BA1BF8B70500664C5B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -314,15 +319,18 @@
 				INFOPLIST_FILE = "NSData+ByteView/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.abigale.NSData-ByteView";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		27E699BB1BF8B70500664C5B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -332,6 +340,7 @@
 				INFOPLIST_FILE = "NSData+ByteView/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = "de.abigale.NSData-ByteView";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -372,21 +381,23 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		27E699B91BF8B70500664C5B /* Build configuration list for PBXNativeTarget "NSData+ByteView" */ = {
+		27E699B91BF8B70500664C5B /* Build configuration list for PBXNativeTarget "NSData_ByteView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				27E699BA1BF8B70500664C5B /* Debug */,
 				27E699BB1BF8B70500664C5B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
-		27E699BC1BF8B70500664C5B /* Build configuration list for PBXNativeTarget "NSData+ByteViewTests" */ = {
+		27E699BC1BF8B70500664C5B /* Build configuration list for PBXNativeTarget "NSData_ByteViewTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				27E699BD1BF8B70500664C5B /* Debug */,
 				27E699BE1BF8B70500664C5B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:NSData+ByteView.xcodeproj">
+      location = "self:/Users/mike/abigale projects/michaelradtke/NSData+ByteView/NSData+ByteView.xcodeproj">
    </FileRef>
 </Workspace>
