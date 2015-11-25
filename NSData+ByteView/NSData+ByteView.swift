@@ -27,7 +27,7 @@
  
  import Foundation
  
- 
+
  
  
  public extension NSData {
@@ -35,7 +35,7 @@
     public enum DataError: ErrorType {
         case ConversionError
     }
-    
+
     
     //MARK: - Creating Data Objects
     
@@ -141,15 +141,15 @@
         self.init(data: NSData.withByteArray(bytes))
     }
     
-    public convenience init(byteOrder: ByteOrder = .BigEndian, wordArray: WordArray) {
+    public convenience init(wordArray: WordArray, byteOrder: ByteOrder = .BigEndian) {
         self.init(data: NSData.withWordArray(wordArray, byteOrder: byteOrder))
     }
     
-    public convenience init(byteOrder: ByteOrder = .BigEndian, doubleWordArray: DoubleWordArray) {
+    public convenience init(doubleWordArray: DoubleWordArray, byteOrder: ByteOrder = .BigEndian) {
         self.init(data: NSData.withDoubleWordArray(doubleWordArray, byteOrder: byteOrder))
     }
     
-    public convenience init(byteOrder: ByteOrder = .BigEndian, longArray: LongArray) {
+    public convenience init(longArray: LongArray, byteOrder: ByteOrder = .BigEndian) {
         self.init(data: NSData.withLongArray(longArray, byteOrder: byteOrder))
     }
     

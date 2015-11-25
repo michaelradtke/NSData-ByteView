@@ -59,7 +59,7 @@ class NSData_ByteViewTests: XCTestCase {
     }
     
     func testWordAsLittleEndianCreateable() {
-        let data = NSData(byteOrder: .LittleEndian, wordArray: wordArray)
+        let data = NSData(wordArray: wordArray, byteOrder: .LittleEndian)
         
         XCTAssertEqual(data.hexString, "0100feff")
     }
@@ -71,7 +71,7 @@ class NSData_ByteViewTests: XCTestCase {
     }
     
     func testDoubleWordAsLittleEndianCreateable() {
-        let data = NSData(byteOrder: .LittleEndian, doubleWordArray: doubleWordArray)
+        let data = NSData(doubleWordArray: doubleWordArray, byteOrder: .LittleEndian)
         
         XCTAssertEqual(data.hexString, "01000000feffffff6e29dc34")
     }
@@ -83,7 +83,7 @@ class NSData_ByteViewTests: XCTestCase {
     }
     
     func testLongAsLitteEndianCreateable() {
-        let data = NSData(byteOrder: .LittleEndian, longArray: longArray)
+        let data = NSData(longArray: longArray, byteOrder: .LittleEndian)
         
         XCTAssertEqual(data.hexString, "0100000000000000fefffffffffffffff97a0da34fdc1287")
     }
@@ -138,7 +138,7 @@ class NSData_ByteViewTests: XCTestCase {
     }
     
     func testWordAsLittleEndianRestoreable() {
-        let data = NSData(byteOrder: .LittleEndian, wordArray: wordArray)
+        let data = NSData(wordArray: wordArray, byteOrder: .LittleEndian)
         
         let restored = try! data.getWordArray(byteOrder: .LittleEndian)
         
@@ -154,7 +154,7 @@ class NSData_ByteViewTests: XCTestCase {
     }
     
     func testDoubleWordAsLittleEndianRestoreable() {
-        let data = NSData(byteOrder: .LittleEndian, doubleWordArray: doubleWordArray)
+        let data = NSData(doubleWordArray: doubleWordArray, byteOrder: .LittleEndian)
         
         let restored = try! data.getDoubleWordArray(byteOrder: .LittleEndian)
         
@@ -170,7 +170,7 @@ class NSData_ByteViewTests: XCTestCase {
     }
     
     func testLongAsLitteEndianRestoreable() {
-        let data = NSData(byteOrder: .LittleEndian, longArray: longArray)
+        let data = NSData(longArray: longArray, byteOrder: .LittleEndian)
         
         let restored = try! data.getLongArray(byteOrder: .LittleEndian)
         
