@@ -33,7 +33,7 @@ class NSData_ByteViewTests: XCTestCase {
     let wordArray: WordArray = [1, (Word.max - 1)]
     let doubleWordArray: DoubleWordArray = [1, (DoubleWord.max - 1), 0x34dc296e]
     let longArray: LongArray = [1, (Long.max - 1), 0x8712dc4fa30d7af9]
-
+    
     
     // MARK: -
     

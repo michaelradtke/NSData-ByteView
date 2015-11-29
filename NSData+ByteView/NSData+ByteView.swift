@@ -27,8 +27,6 @@
  
  import Foundation
  
-
- 
  
  public extension NSData {
     
@@ -39,126 +37,109 @@
     
     //MARK: - Creating Data Objects
     
-    class public func withByteArray(byteArray: ByteArray) -> NSData {
-        guard !byteArray.isEmpty else {
-            return NSData()
-        }
-        
-        return NSData(bytes: byteArray, length: byteArray.count)
+    public convenience init(byteArray: ByteArray) {
+        self.init(bytes: byteArray, length: byteArray.count)
     }
     
-    class public func withWordArray(wordArray: WordArray, byteOrder: ByteOrder = .BigEndian) -> NSData {
-        guard !wordArray.isEmpty else {
-            return NSData()
-        }
-        
+    public convenience init(bytes: Byte...) {
+        self.init(byteArray: bytes)
+    }
+    
+    public convenience init(wordArray: WordArray, byteOrder: ByteOrder = .BigEndian) {
         var tempByteArray = ByteArray()
         for word in wordArray {
             tempByteArray.appendContentsOf(byteOrder.composeBytesFor(word))
         }
-        
-        return NSData.withByteArray(tempByteArray)
+        self.init(bytes: tempByteArray, length: tempByteArray.count)
     }
     
-    class public func withDoubleWordArray(doubleWordArray: DoubleWordArray, byteOrder: ByteOrder = .BigEndian) -> NSData {
-        guard !doubleWordArray.isEmpty else {
-            return NSData()
-        }
-        
+    public convenience init(bigEndianWords words: Word...) {
+        self.init(wordArray: words, byteOrder: .BigEndian)
+    }
+    
+    public convenience init(litteEndianWords words: Word...) {
+        self.init(wordArray: words, byteOrder: .LittleEndian)
+    }
+    
+    public convenience init(doubleWordArray: DoubleWordArray, byteOrder: ByteOrder = .BigEndian) {
         var tempByteArray = ByteArray()
         for dWord in doubleWordArray {
             tempByteArray.appendContentsOf(byteOrder.composeBytesFor(dWord))
         }
-        return NSData.withByteArray(tempByteArray)
+        self.init(bytes: tempByteArray, length: tempByteArray.count)
     }
     
-    class public func withLongArray(longArray: LongArray, byteOrder: ByteOrder = .BigEndian) -> NSData {
-        guard !longArray.isEmpty else {
-            return NSData()
-        }
-        
+    public convenience init(bigEndianDoubleWords words: DoubleWord...) {
+        self.init(doubleWordArray: words, byteOrder: .BigEndian)
+    }
+    
+    public convenience init(litteEndianDoubleWords words: DoubleWord...) {
+        self.init(doubleWordArray: words, byteOrder: .LittleEndian)
+    }
+    
+    public convenience init(longArray: LongArray, byteOrder: ByteOrder = .BigEndian) {
         var tempByteArray = ByteArray()
         for long in longArray {
             tempByteArray.appendContentsOf(byteOrder.composeBytesFor(long))
         }
-        return NSData.withByteArray(tempByteArray)
+        self.init(bytes: tempByteArray, length: tempByteArray.count)
     }
     
-    class public func withBooleanArray(var booleanArray: BooleanArray) -> NSData {
-        guard !booleanArray.isEmpty else {
-            return NSData()
-        }
-        
-        var tempByteArray: ByteArray
-        let tempByteStartingValue: Byte
-        
-        // The count of boolean values must always be stored so we can return the correct count of boolean while reading
-        // Attention: The count - 1, so we can have 256 instead of 255 bits stored
-        let correctedBoolCount = booleanArray.count - 1
-        
-        switch booleanArray.count {
-        case 1...5:
-            // Up to five booleans including the length information can be stored in one byte
-            tempByteStartingValue = Byte(correctedBoolCount) << 5
-            tempByteArray = ByteArray()
-        default:
-            // More than 5 booleans must be stored with the size information in dedicated bytes
-            tempByteStartingValue = 0
-            let byteOrder = ByteOrder.BigEndian
+//    public convenience init(longs: Long... , byteOrder: ByteOrder) {
+//        self.init(longArray: longs, byteOrder: byteOrder)
+//    }
+    
+    public convenience init(var booleanArray: BooleanArray) {
+        if booleanArray.isEmpty {
+            self.init()
+        } else {
+            var tempByteArray: ByteArray
+            let tempByteStartingValue: Byte
             
-            switch correctedBoolCount {
-            case 0..<256:               tempByteArray = [Byte(correctedBoolCount)]
-            case 256..<65536:           tempByteArray = byteOrder.composeBytesFor(Word(correctedBoolCount))
-            case 65536..<4294967296:    tempByteArray = byteOrder.composeBytesFor(DoubleWord(correctedBoolCount))
-            default:                    tempByteArray = byteOrder.composeBytesFor(Long(correctedBoolCount))
-            }
-        }
-        
-        // Compose one byte out of eight boolean values
-        let startBitPosition: Byte = 0b00000001
-        while booleanArray.count > 0 {
-            let chunckCount = min(booleanArray.count, 8)
-            var tempByte: Byte = tempByteStartingValue
-            var shiftingWidth: Byte = 0
+            // The count of boolean values must always be stored so we can return the correct count of boolean while reading
+            // Attention: The count - 1, so we can have 256 instead of 255 bits stored
+            let correctedBoolCount = booleanArray.count - 1
             
-            for _ in 0..<chunckCount {
-                if booleanArray.removeFirst() == true {
-                    tempByte = tempByte | (startBitPosition << shiftingWidth)
+            switch booleanArray.count {
+            case 1...5:
+                // Up to five booleans including the length information can be stored in one byte
+                tempByteStartingValue = Byte(correctedBoolCount) << 5
+                tempByteArray = ByteArray()
+            default:
+                // More than 5 booleans must be stored with the size information in dedicated bytes
+                tempByteStartingValue = 0
+                let byteOrder = ByteOrder.BigEndian
+                
+                switch correctedBoolCount {
+                case 0..<256:               tempByteArray = [Byte(correctedBoolCount)]
+                case 256..<65536:           tempByteArray = byteOrder.composeBytesFor(Word(correctedBoolCount))
+                case 65536..<4294967296:    tempByteArray = byteOrder.composeBytesFor(DoubleWord(correctedBoolCount))
+                default:                    tempByteArray = byteOrder.composeBytesFor(Long(correctedBoolCount))
                 }
-                shiftingWidth++
             }
-            tempByteArray.append(tempByte)
+            
+            // Compose one byte out of eight boolean values
+            let startBitPosition: Byte = 0b00000001
+            while booleanArray.count > 0 {
+                let chunckCount = min(booleanArray.count, 8)
+                var tempByte: Byte = tempByteStartingValue
+                var shiftingWidth: Byte = 0
+                
+                for _ in 0..<chunckCount {
+                    if booleanArray.removeFirst() == true {
+                        tempByte = tempByte | (startBitPosition << shiftingWidth)
+                    }
+                    shiftingWidth++
+                }
+                tempByteArray.append(tempByte)
+            }
+            
+            self.init(byteArray: tempByteArray)
         }
-        
-        return NSData.withByteArray(tempByteArray)
-    }
-    
-    public convenience init(byteArray: ByteArray) {
-        self.init(data: NSData.withByteArray(byteArray))
-    }
-    
-    public convenience init(bytes: Byte...) {
-        self.init(data: NSData.withByteArray(bytes))
-    }
-    
-    public convenience init(wordArray: WordArray, byteOrder: ByteOrder = .BigEndian) {
-        self.init(data: NSData.withWordArray(wordArray, byteOrder: byteOrder))
-    }
-    
-    public convenience init(doubleWordArray: DoubleWordArray, byteOrder: ByteOrder = .BigEndian) {
-        self.init(data: NSData.withDoubleWordArray(doubleWordArray, byteOrder: byteOrder))
-    }
-    
-    public convenience init(longArray: LongArray, byteOrder: ByteOrder = .BigEndian) {
-        self.init(data: NSData.withLongArray(longArray, byteOrder: byteOrder))
-    }
-    
-    public convenience init(booleanArray: BooleanArray) {
-        self.init(data: NSData.withBooleanArray(booleanArray))
     }
     
     public convenience init(booleans: Bool...) {
-        self.init(data: NSData.withBooleanArray(booleans))
+        self.init(booleanArray: booleans)
     }
     
     
