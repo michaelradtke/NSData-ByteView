@@ -149,56 +149,56 @@ class NSData_ByteViewTests: XCTestCase {
     func testWordAsBigEndianRestoreable() {
         let data = NSData(wordSequence: wordArray)
         
-        let restored = try! data.getWordArray()
+        let restored = try! data.wordSequence()
         
-        XCTAssertEqual(restored, wordArray)
+        XCTAssertEqual(Array.init(restored), wordArray)
     }
     
     func testWordAsLittleEndianRestoreable() {
         let data = NSData(wordSequence: wordArray, byteOrder: .LittleEndian)
         
-        let restored = try! data.getWordArray(byteOrder: .LittleEndian)
+        let restored = try! data.wordSequence(byteOrder: .LittleEndian)
         
-        XCTAssertEqual(restored, wordArray)
+        XCTAssertEqual(Array.init(restored), wordArray)
     }
     
     func testDoubleWordAsBigEndianRestoreable() {
         let data = NSData(doubleWordSequence: doubleWordArray)
         
-        let restored = try! data.getDoubleWordArray()
+        let restored = try! data.doubleWordSequence()
         
-        XCTAssertEqual(restored, doubleWordArray)
+        XCTAssertEqual(Array.init(restored), doubleWordArray)
     }
     
     func testDoubleWordAsLittleEndianRestoreable() {
         let data = NSData(doubleWordSequence: doubleWordArray, byteOrder: .LittleEndian)
         
-        let restored = try! data.getDoubleWordArray(byteOrder: .LittleEndian)
+        let restored = try! data.doubleWordSequence(byteOrder: .LittleEndian)
         
-        XCTAssertEqual(restored, doubleWordArray)
+        XCTAssertEqual(Array.init(restored), doubleWordArray)
     }
     
     func testLongAsBigEndianRestoreable() {
         let data = NSData(longSequence: longArray)
         
-        let restored = try! data.getLongArray()
+        let restored = try! data.longSequence()
         
-        XCTAssertEqual(restored, longArray)
+        XCTAssertEqual(Array.init(restored), longArray)
     }
     
     func testLongAsLitteEndianRestoreable() {
         let data = NSData(longSequence: longArray, byteOrder: .LittleEndian)
         
-        let restored = try! data.getLongArray(byteOrder: .LittleEndian)
+        let restored = try! data.longSequence(byteOrder: .LittleEndian)
         
-        XCTAssertEqual(restored, longArray)
+        XCTAssertEqual(Array.init(restored), longArray)
     }
     
     func testBoolResoreable_SmallSized() {
         let boolArray: BooleanArray = [true, false, true, true, false]
         let data = NSData(booleanSequence: boolArray)
         
-        let restored = data.getBooleanArray()
+        let restored = Array.init(data.booleanSequence())
         
         XCTAssertEqual(restored.count, 5)
         XCTAssertEqual(restored, boolArray)
@@ -208,7 +208,7 @@ class NSData_ByteViewTests: XCTestCase {
         let boolArray: BooleanArray = [true, false, true, true, true, false, false, false, true, true, true, true]
         let data = NSData(booleanSequence: boolArray)
         
-        let restored = data.getBooleanArray()
+        let restored = Array.init(data.booleanSequence())
         
         XCTAssertEqual(restored.count, 12)
         XCTAssertEqual(restored, boolArray)
@@ -221,7 +221,7 @@ class NSData_ByteViewTests: XCTestCase {
         }
         let data = NSData(booleanSequence: booleanArray)
         
-        let restored = data.getBooleanArray()
+        let restored = Array.init(data.booleanSequence())
         
         XCTAssertEqual(restored.count, 1029)
         XCTAssertEqual(restored, booleanArray)
@@ -234,7 +234,7 @@ class NSData_ByteViewTests: XCTestCase {
         }
         let data = NSData(booleanSequence: booleanArray)
         
-        let restored = data.getBooleanArray()
+        let restored = Array.init(data.booleanSequence())
         
         XCTAssertEqual(restored.count, 66321)
         XCTAssertEqual(restored, booleanArray)

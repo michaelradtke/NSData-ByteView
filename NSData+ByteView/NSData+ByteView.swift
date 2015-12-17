@@ -35,8 +35,9 @@
     }
     
     
-    //MARK: - Creating Data Objects
+    // MARK: - Creating Data Objects
     
+    // MARK: Byte
     public convenience init<S: SequenceType where S.Generator.Element == Byte>(byteSequence: S) {
         let byteArray = Array.init(byteSequence)
         self.init(bytes: byteArray, length: byteArray.count)
@@ -170,14 +171,20 @@
         return hexString
     }
     
-    public var byteArray: ByteArray {
+    // MARK: Byte
+    public var byteArray: [Byte] {
         let count = self.length / sizeof(Byte)
         var bytesArray = ByteArray(count: count, repeatedValue: 0)
         self.getBytes(&bytesArray, length:self.length)
         return bytesArray
     }
     
-    public func getWordArray(byteOrder byteOrder: ByteOrder = .BigEndian) throws -> WordArray {
+    public func byteSequence() -> AnySequence<Byte>{
+        return AnySequence(byteArray)
+    }
+    
+    // MARK: Word
+    public func wordSequence(byteOrder byteOrder: ByteOrder = .BigEndian) throws -> AnySequence<Word> {
         guard self.length % sizeof(Word) == 0 else {
             throw DataError.ConversionError
         }
@@ -193,10 +200,11 @@
             )
             wordArray[index] = byteOrder.decomposeBytes(biw)
         }
-        return wordArray
+        return AnySequence(wordArray)
     }
     
-    public func getDoubleWordArray(byteOrder byteOrder: ByteOrder = .BigEndian) throws -> DoubleWordArray {
+    // MARK: DoubleWord
+    public func doubleWordSequence(byteOrder byteOrder: ByteOrder = .BigEndian) throws -> AnySequence<DoubleWord> {
         guard self.length % sizeof(DoubleWord) == 0 else {
             throw DataError.ConversionError
         }
@@ -214,10 +222,11 @@
             )
             dWordArray[index] = byteOrder.decomposeBytes(bidw)
         }
-        return dWordArray
+        return AnySequence(dWordArray)
     }
     
-    public func getLongArray(byteOrder byteOrder: ByteOrder = .BigEndian) throws -> LongArray {
+    // MARK: Long
+    public func longSequence(byteOrder byteOrder: ByteOrder = .BigEndian) throws -> AnySequence<Long> {
         guard self.length % sizeof(Long) == 0 else {
             throw DataError.ConversionError
         }
@@ -239,10 +248,11 @@
             )
             longArray[index] = byteOrder.decomposeBytes(bil)
         }
-        return longArray
+        return AnySequence(longArray)
     }
     
-    public func getBooleanArray() -> BooleanArray {
+    // MARK: Bool
+    public func booleanSequence() -> AnySequence<Bool> {
         var tempBooleanArray = BooleanArray()
         var byteArray = self.byteArray
         let expectedSize: Int
@@ -290,7 +300,7 @@
             tempBooleanArray.removeLast()
         }
         
-        return tempBooleanArray
+        return AnySequence(tempBooleanArray)
     }
     
     
