@@ -33,63 +33,74 @@
     public enum DataError: ErrorType {
         case ConversionError
     }
-
+    
     
     //MARK: - Creating Data Objects
     
-    public convenience init(byteArray: ByteArray) {
+    public convenience init<S: SequenceType where S.Generator.Element == Byte>(byteSequence: S) {
+        let byteArray = Array.init(byteSequence)
         self.init(bytes: byteArray, length: byteArray.count)
     }
     
     public convenience init(bytes: Byte...) {
-        self.init(byteArray: bytes)
+        self.init(bytes: bytes, length: bytes.count)
     }
     
-    public convenience init(wordArray: WordArray, byteOrder: ByteOrder = .BigEndian) {
+    // MARK: Word
+    public convenience init<S: SequenceType where S.Generator.Element == Word>(wordSequence: S, byteOrder: ByteOrder = .BigEndian) {
         var tempByteArray = ByteArray()
-        for word in wordArray {
+        for word in wordSequence {
             tempByteArray.appendContentsOf(byteOrder.composeBytesFor(word))
         }
         self.init(bytes: tempByteArray, length: tempByteArray.count)
     }
     
     public convenience init(bigEndianWords words: Word...) {
-        self.init(wordArray: words, byteOrder: .BigEndian)
+        self.init(wordSequence: words, byteOrder: .BigEndian)
     }
     
     public convenience init(litteEndianWords words: Word...) {
-        self.init(wordArray: words, byteOrder: .LittleEndian)
+        self.init(wordSequence: words, byteOrder: .LittleEndian)
     }
     
-    public convenience init(doubleWordArray: DoubleWordArray, byteOrder: ByteOrder = .BigEndian) {
+    // MARK: DoubleWord
+    public convenience init<S: SequenceType where S.Generator.Element == DoubleWord>(doubleWordSequence: S, byteOrder: ByteOrder = .BigEndian) {
         var tempByteArray = ByteArray()
-        for dWord in doubleWordArray {
+        for dWord in doubleWordSequence {
             tempByteArray.appendContentsOf(byteOrder.composeBytesFor(dWord))
         }
         self.init(bytes: tempByteArray, length: tempByteArray.count)
     }
     
     public convenience init(bigEndianDoubleWords words: DoubleWord...) {
-        self.init(doubleWordArray: words, byteOrder: .BigEndian)
+        self.init(doubleWordSequence: words, byteOrder: .BigEndian)
     }
     
     public convenience init(litteEndianDoubleWords words: DoubleWord...) {
-        self.init(doubleWordArray: words, byteOrder: .LittleEndian)
+        self.init(doubleWordSequence: words, byteOrder: .LittleEndian)
     }
     
-    public convenience init(longArray: LongArray, byteOrder: ByteOrder = .BigEndian) {
+    // MARK: Long
+    public convenience init<S: SequenceType where S.Generator.Element == Long>(longSequence: S, byteOrder: ByteOrder = .BigEndian) {
         var tempByteArray = ByteArray()
-        for long in longArray {
+        for long in longSequence {
             tempByteArray.appendContentsOf(byteOrder.composeBytesFor(long))
         }
         self.init(bytes: tempByteArray, length: tempByteArray.count)
     }
     
-//    public convenience init(longs: Long... , byteOrder: ByteOrder) {
-//        self.init(longArray: longs, byteOrder: byteOrder)
-//    }
+    public convenience init(bigEndianLongs longs: Long...) {
+        self.init(longSequence: longs, byteOrder: .BigEndian)
+    }
     
-    public convenience init(var booleanArray: BooleanArray) {
+    public convenience init(littleEndianLongs longs: Long...) {
+        self.init(longSequence: longs, byteOrder: .LittleEndian)
+    }
+    
+
+    // MARK: Bool
+    public convenience init<S: SequenceType where S.Generator.Element == Bool>(booleanSequence: S) {
+        var booleanArray = Array.init(booleanSequence)
         if booleanArray.isEmpty {
             self.init()
         } else {
@@ -134,16 +145,16 @@
                 tempByteArray.append(tempByte)
             }
             
-            self.init(byteArray: tempByteArray)
+            self.init(byteSequence: tempByteArray)
         }
     }
     
     public convenience init(booleans: Bool...) {
-        self.init(booleanArray: booleans)
+        self.init(booleanSequence: booleans)
     }
     
     
-    // MARK: Accessing Data
+    // MARK: - Accessing Data
     
     public var hexString: String {
         var tempByte: Byte = 0
@@ -283,7 +294,7 @@
     }
     
     
-    // MARK: Private Stuff
+    // MARK: - Private Stuff
     private func getByteAndIncreaseRangeLocation(inout range: NSRange) -> Byte {
         var tempByte: Byte = 0
         self.getBytes(&tempByte, range: range)
