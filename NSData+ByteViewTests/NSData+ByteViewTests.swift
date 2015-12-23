@@ -137,6 +137,40 @@ class NSData_ByteViewTests: XCTestCase {
         XCTAssertEqual(data.length, 8197)
     }
     
+    // MARK: HexString
+    func testHexStringCreateable() {
+        let data = try! NSData(hexString: "e8A43f00Ff")
+        
+        XCTAssertEqual(data.hexString, "e8a43f00ff")
+    }
+    
+    func testHexStringCreationCanFail_ToShort() {
+        do {
+            try NSData(hexString: "")
+            XCTAssertTrue(false)
+        } catch {
+            XCTAssertTrue(true)
+        }
+    }
+    
+    func testHexStringCreationCanFail_NoEvenLength() {
+        do {
+            try NSData(hexString: "123")
+            XCTAssertTrue(false)
+        } catch {
+            XCTAssertTrue(true)
+        }
+    }
+    
+    func testHexStringCreationCanFail_InsufficientCharacter() {
+        do {
+            try NSData(hexString: "fg")
+            XCTAssertTrue(false)
+        } catch {
+            XCTAssertTrue(true)
+        }
+    }
+    
     
     // MARK: - Test that values can be retored from NSData
     
@@ -194,7 +228,7 @@ class NSData_ByteViewTests: XCTestCase {
         XCTAssertEqual(Array.init(restored), longArray)
     }
     
-    func testBoolResoreable_SmallSized() {
+    func testBoolRestoreable_SmallSized() {
         let boolArray: BooleanArray = [true, false, true, true, false]
         let data = NSData(booleanSequence: boolArray)
         
@@ -204,7 +238,7 @@ class NSData_ByteViewTests: XCTestCase {
         XCTAssertEqual(restored, boolArray)
     }
     
-    func testBoolResoreable_MediumSized() {
+    func testBoolRestoreable_MediumSized() {
         let boolArray: BooleanArray = [true, false, true, true, true, false, false, false, true, true, true, true]
         let data = NSData(booleanSequence: boolArray)
         
@@ -214,7 +248,7 @@ class NSData_ByteViewTests: XCTestCase {
         XCTAssertEqual(restored, boolArray)
     }
     
-    func testBoolResoreable_HighSized() {
+    func testBoolRestoreable_HighSized() {
         var booleanArray = BooleanArray()
         for _ in 1...1029 {
             booleanArray.append(randomBoolean)
@@ -227,7 +261,7 @@ class NSData_ByteViewTests: XCTestCase {
         XCTAssertEqual(restored, booleanArray)
     }
     
-    func testBoolResoreable_VeryHighSized() {
+    func testBoolRestoreable_VeryHighSized() {
         var booleanArray = BooleanArray()
         for _ in 1...66321 {
             booleanArray.append(randomBoolean)
@@ -238,6 +272,13 @@ class NSData_ByteViewTests: XCTestCase {
         
         XCTAssertEqual(restored.count, 66321)
         XCTAssertEqual(restored, booleanArray)
+    }
+    
+    // MARK: HexString
+    func testHexStringRestoreable() {
+        let data = try! NSData(hexString: "0001feff")
+        
+        XCTAssertEqual(data.byteArray, byteArray)
     }
 
     

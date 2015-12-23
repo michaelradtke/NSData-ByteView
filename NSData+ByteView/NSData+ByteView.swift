@@ -145,7 +145,6 @@
                 }
                 tempByteArray.append(tempByte)
             }
-            
             self.init(byteSequence: tempByteArray)
         }
     }
@@ -154,6 +153,32 @@
         self.init(booleanSequence: booleans)
     }
     
+    
+    // MARK: HexString
+    public convenience init(hexString: String) throws {
+        let characterCount = hexString.characters.count
+        guard characterCount > 0 && characterCount % 2 == 0 else {
+            throw HexStringError.InsufficientLength
+        }
+        
+        let regex = try! NSRegularExpression(pattern: "[0-9a-f]", options: .CaseInsensitive)
+        
+        let correctCharacterCount = regex.numberOfMatchesInString(hexString, options: [], range: NSMakeRange(0, characterCount))
+        if correctCharacterCount != characterCount {
+            throw HexStringError.InsufficientCharacters
+        }
+        
+        var tempByteArray = ByteArray()
+        
+        for var index = hexString.startIndex; index < hexString.endIndex; index = index.successor().successor() {
+            let range = Range<String.Index>(start: index, end: index.successor().successor())
+            let byteString = hexString.substringWithRange(range)
+            let num = UInt8(byteString.withCString { strtoul($0, nil, 16) })
+            tempByteArray.append(num)
+        }
+        
+        self.init(byteSequence: tempByteArray)
+    }
     
     // MARK: - Accessing Data
     
