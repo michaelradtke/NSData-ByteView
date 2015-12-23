@@ -36,6 +36,11 @@ public typealias DoubleWordArray = [DoubleWord]
 public typealias LongArray       = [Long]
 public typealias BooleanArray    = [Bool]
 
+public enum HexStringError: ErrorType {
+    case InsufficientLength
+    case InsufficientCharacters
+}
+
 typealias BytesOfWord            = (b0: Byte, b1: Byte)
 typealias BytesOfDoubleWord      = (b0: Byte, b1: Byte, b2: Byte, b3:Byte)
 typealias BytesOfLong            = (b0: Byte, b1: Byte, b2: Byte, b3:Byte, b4: Byte, b5: Byte, b6: Byte, b7:Byte)
