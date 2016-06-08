@@ -26,12 +26,12 @@
 //  THE SOFTWARE.
 
 public typealias Byte            = UInt8
-public typealias Word            = UInt16
+public typealias SingleWord      = UInt16
 public typealias DoubleWord      = UInt32
 public typealias Long            = UInt64
 
 public typealias ByteArray       = [Byte]
-public typealias WordArray       = [Word]
+public typealias WordArray       = [SingleWord]
 public typealias DoubleWordArray = [DoubleWord]
 public typealias LongArray       = [Long]
 public typealias BooleanArray    = [Bool]

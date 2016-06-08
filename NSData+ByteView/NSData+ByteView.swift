@@ -48,7 +48,7 @@
     }
     
     // MARK: Word
-    public convenience init<S: SequenceType where S.Generator.Element == Word>(wordSequence: S, byteOrder: ByteOrder = .BigEndian) {
+    public convenience init<S: SequenceType where S.Generator.Element == SingleWord>(wordSequence: S, byteOrder: ByteOrder = .BigEndian) {
         var tempByteArray = ByteArray()
         for word in wordSequence {
             tempByteArray.appendContentsOf(byteOrder.composeBytesFor(word))
@@ -56,11 +56,11 @@
         self.init(bytes: tempByteArray, length: tempByteArray.count)
     }
     
-    public convenience init(bigEndianWords words: Word...) {
+    public convenience init(bigEndianWords words: SingleWord...) {
         self.init(wordSequence: words, byteOrder: .BigEndian)
     }
     
-    public convenience init(litteEndianWords words: Word...) {
+    public convenience init(litteEndianWords words: SingleWord...) {
         self.init(wordSequence: words, byteOrder: .LittleEndian)
     }
     
@@ -124,7 +124,7 @@
                 
                 switch correctedBoolCount {
                 case 0..<256:               tempByteArray = [Byte(correctedBoolCount)]
-                case 256..<65536:           tempByteArray = byteOrder.composeBytesFor(Word(correctedBoolCount))
+                case 256..<65536:           tempByteArray = byteOrder.composeBytesFor(SingleWord(correctedBoolCount))
                 case 65536..<4294967296:    tempByteArray = byteOrder.composeBytesFor(DoubleWord(correctedBoolCount))
                 default:                    tempByteArray = byteOrder.composeBytesFor(Long(correctedBoolCount))
                 }
@@ -141,7 +141,7 @@
                     if booleanArray.removeFirst() == true {
                         tempByte = tempByte | (startBitPosition << shiftingWidth)
                     }
-                    shiftingWidth++
+                    shiftingWidth += 1
                 }
                 tempByteArray.append(tempByte)
             }
@@ -170,11 +170,14 @@
         
         var tempByteArray = ByteArray()
         
-        for var index = hexString.startIndex; index < hexString.endIndex; index = index.successor().successor() {
-            let range = Range<String.Index>(start: index, end: index.successor().successor())
+        var index = hexString.startIndex
+        while index < hexString.endIndex {
+            let range = index ... index.successor()
             let byteString = hexString.substringWithRange(range)
             let num = UInt8(byteString.withCString { strtoul($0, nil, 16) })
             tempByteArray.append(num)
+            
+            index = index.successor().successor()
         }
         
         self.init(byteSequence: tempByteArray)
@@ -190,7 +193,7 @@
         for _ in 0..<self.length {
             self.getBytes(&tempByte, range: tempByteRange)
             hexString += String(format: "%02x", tempByte)
-            tempByteRange.location++
+            tempByteRange.location += 1
         }
         
         return hexString
@@ -209,12 +212,12 @@
     }
     
     // MARK: Word
-    public func wordSequence(byteOrder byteOrder: ByteOrder = .BigEndian) throws -> AnySequence<Word> {
-        guard self.length % sizeof(Word) == 0 else {
+    public func wordSequence(byteOrder byteOrder: ByteOrder = .BigEndian) throws -> AnySequence<SingleWord> {
+        guard self.length % sizeof(SingleWord) == 0 else {
             throw DataError.ConversionError
         }
         
-        let count = self.length / sizeof(Word)
+        let count = self.length / sizeof(SingleWord)
         var wordArray = WordArray(count: count, repeatedValue: 0)
         var tempByteRange = NSRange(location: 0, length: 1)
         
@@ -333,7 +336,7 @@
     private func getByteAndIncreaseRangeLocation(inout range: NSRange) -> Byte {
         var tempByte: Byte = 0
         self.getBytes(&tempByte, range: range)
-        range.location++
+        range.location += 1
         return tempByte
     }
     

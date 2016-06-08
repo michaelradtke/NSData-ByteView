@@ -34,7 +34,7 @@ public enum ByteOrder {
 
 
 extension ByteOrder {
-    func composeBytesFor(word: Word) -> ByteArray {
+    func composeBytesFor(word: SingleWord) -> ByteArray {
         let byteArray: ByteArray = [
             Byte(word >> 8),
             Byte(word & 0x00FF)
@@ -66,15 +66,19 @@ extension ByteOrder {
         return respectByteOrder(byteArray)
     }
     
-    func decomposeBytes(var bytes: BytesOfWord) -> Word {
+    func decomposeBytes(bytes: BytesOfWord) -> SingleWord {
+        var bytes = bytes
+        
         if self == .LittleEndian {
             swap(&bytes.b0, &bytes.b1)
         }
-        let word = Word(bytes.b0) << 8 + Word(bytes.b1)
+        let word = SingleWord(bytes.b0) << 8 + SingleWord(bytes.b1)
         return word
     }
     
-    func decomposeBytes(var bytes: BytesOfDoubleWord) -> DoubleWord {
+    func decomposeBytes(bytes: BytesOfDoubleWord) -> DoubleWord {
+        var bytes = bytes
+        
         if self == .LittleEndian {
             swap(&bytes.b0, &bytes.b3)
             swap(&bytes.b1, &bytes.b2)
@@ -84,7 +88,9 @@ extension ByteOrder {
         return dWord1 + dWord2
     }
     
-    func decomposeBytes(var bytes: BytesOfLong) -> Long {
+    func decomposeBytes(bytes: BytesOfLong) -> Long {
+        var bytes = bytes
+        
         if self == .LittleEndian {
             swap(&bytes.b0, &bytes.b7)
             swap(&bytes.b1, &bytes.b6)
