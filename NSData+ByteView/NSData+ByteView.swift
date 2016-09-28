@@ -30,15 +30,15 @@
  
  public extension NSData {
     
-    public enum DataError: ErrorType {
-        case ConversionError
+    public enum DataError: Error {
+        case conversionError
     }
     
     
-    // MARK: - Creating Data Objects
+    // MARK: - Creating NSData Objects
     
     // MARK: Byte
-    public convenience init<S: SequenceType where S.Generator.Element == Byte>(byteSequence: S) {
+    public convenience init<S: Sequence>(byteSequence: S) where S.Iterator.Element == Byte {
         let byteArray = Array.init(byteSequence)
         self.init(bytes: byteArray, length: byteArray.count)
     }
@@ -48,59 +48,59 @@
     }
     
     // MARK: Word
-    public convenience init<S: SequenceType where S.Generator.Element == SingleWord>(wordSequence: S, byteOrder: ByteOrder = .BigEndian) {
+    public convenience init<S: Sequence>(wordSequence: S, byteOrder: ByteOrder = .bigEndian) where S.Iterator.Element == SingleWord {
         var tempByteArray = ByteArray()
         for word in wordSequence {
-            tempByteArray.appendContentsOf(byteOrder.composeBytesFor(word))
+			tempByteArray.append(contentsOf: byteOrder.composeBytesFor(word))
         }
         self.init(bytes: tempByteArray, length: tempByteArray.count)
     }
     
     public convenience init(bigEndianWords words: SingleWord...) {
-        self.init(wordSequence: words, byteOrder: .BigEndian)
+        self.init(wordSequence: words, byteOrder: .bigEndian)
     }
     
     public convenience init(litteEndianWords words: SingleWord...) {
-        self.init(wordSequence: words, byteOrder: .LittleEndian)
+        self.init(wordSequence: words, byteOrder: .littleEndian)
     }
     
     // MARK: DoubleWord
-    public convenience init<S: SequenceType where S.Generator.Element == DoubleWord>(doubleWordSequence: S, byteOrder: ByteOrder = .BigEndian) {
+    public convenience init<S: Sequence>(doubleWordSequence: S, byteOrder: ByteOrder = .bigEndian) where S.Iterator.Element == DoubleWord {
         var tempByteArray = ByteArray()
         for dWord in doubleWordSequence {
-            tempByteArray.appendContentsOf(byteOrder.composeBytesFor(dWord))
+			tempByteArray.append(contentsOf: byteOrder.composeBytesFor(dWord))
         }
         self.init(bytes: tempByteArray, length: tempByteArray.count)
     }
     
     public convenience init(bigEndianDoubleWords words: DoubleWord...) {
-        self.init(doubleWordSequence: words, byteOrder: .BigEndian)
+        self.init(doubleWordSequence: words, byteOrder: .bigEndian)
     }
     
     public convenience init(litteEndianDoubleWords words: DoubleWord...) {
-        self.init(doubleWordSequence: words, byteOrder: .LittleEndian)
+        self.init(doubleWordSequence: words, byteOrder: .littleEndian)
     }
     
     // MARK: Long
-    public convenience init<S: SequenceType where S.Generator.Element == Long>(longSequence: S, byteOrder: ByteOrder = .BigEndian) {
+    public convenience init<S: Sequence>(longSequence: S, byteOrder: ByteOrder = .bigEndian) where S.Iterator.Element == Long {
         var tempByteArray = ByteArray()
         for long in longSequence {
-            tempByteArray.appendContentsOf(byteOrder.composeBytesFor(long))
+			tempByteArray.append(contentsOf: byteOrder.composeBytesFor(long))
         }
         self.init(bytes: tempByteArray, length: tempByteArray.count)
     }
     
     public convenience init(bigEndianLongs longs: Long...) {
-        self.init(longSequence: longs, byteOrder: .BigEndian)
+        self.init(longSequence: longs, byteOrder: .bigEndian)
     }
     
     public convenience init(littleEndianLongs longs: Long...) {
-        self.init(longSequence: longs, byteOrder: .LittleEndian)
+        self.init(longSequence: longs, byteOrder: .littleEndian)
     }
     
 
     // MARK: Bool
-    public convenience init<S: SequenceType where S.Generator.Element == Bool>(booleanSequence: S) {
+    public convenience init<S: Sequence>(booleanSequence: S) where S.Iterator.Element == Bool {
         var booleanArray = Array.init(booleanSequence)
         if booleanArray.isEmpty {
             self.init()
@@ -120,7 +120,7 @@
             default:
                 // More than 5 booleans must be stored with the size information in dedicated bytes
                 tempByteStartingValue = 0
-                let byteOrder = ByteOrder.BigEndian
+                let byteOrder = ByteOrder.bigEndian
                 
                 switch correctedBoolCount {
                 case 0..<256:               tempByteArray = [Byte(correctedBoolCount)]
@@ -158,26 +158,27 @@
     public convenience init(hexString: String) throws {
         let characterCount = hexString.characters.count
         guard characterCount > 0 && characterCount % 2 == 0 else {
-            throw HexStringError.InsufficientLength
+            throw HexStringError.insufficientLength
         }
         
-        let regex = try! NSRegularExpression(pattern: "[0-9a-f]", options: .CaseInsensitive)
+        let regex = try! NSRegularExpression(pattern: "[0-9a-f]", options: .caseInsensitive)
         
-        let correctCharacterCount = regex.numberOfMatchesInString(hexString, options: [], range: NSMakeRange(0, characterCount))
+        let correctCharacterCount = regex.numberOfMatches(in: hexString, options: [], range: NSMakeRange(0, characterCount))
         if correctCharacterCount != characterCount {
-            throw HexStringError.InsufficientCharacters
+            throw HexStringError.insufficientCharacters
         }
         
         var tempByteArray = ByteArray()
         
-        var index = hexString.startIndex
-        while index < hexString.endIndex {
-            let range = index ... index.successor()
-            let byteString = hexString.substringWithRange(range)
-            let num = UInt8(byteString.withCString { strtoul($0, nil, 16) })
+        var actualIndex = hexString.startIndex
+        while actualIndex < hexString.endIndex {
+			let nextIndex = hexString.index(after: actualIndex)
+            let range = actualIndex ... nextIndex
+            let byteString = hexString[range]
+			let num = UInt8(byteString.withCString { strtoul($0, nil, 16) })
             tempByteArray.append(num)
-            
-            index = index.successor().successor()
+			
+			actualIndex = hexString.index(after: nextIndex)
         }
         
         self.init(byteSequence: tempByteArray)
@@ -201,8 +202,8 @@
     
     // MARK: Byte
     public var byteArray: [Byte] {
-        let count = self.length / sizeof(Byte)
-        var bytesArray = ByteArray(count: count, repeatedValue: 0)
+        let count = self.length / MemoryLayout<Byte>.size
+        var bytesArray = ByteArray(repeating: 0, count: count)
         self.getBytes(&bytesArray, length:self.length)
         return bytesArray
     }
@@ -212,13 +213,13 @@
     }
     
     // MARK: Word
-    public func wordSequence(byteOrder byteOrder: ByteOrder = .BigEndian) throws -> AnySequence<SingleWord> {
-        guard self.length % sizeof(SingleWord) == 0 else {
-            throw DataError.ConversionError
+    public func wordSequence(byteOrder: ByteOrder = .bigEndian) throws -> AnySequence<SingleWord> {
+        guard self.length % MemoryLayout<SingleWord>.size == 0 else {
+            throw DataError.conversionError
         }
         
-        let count = self.length / sizeof(SingleWord)
-        var wordArray = WordArray(count: count, repeatedValue: 0)
+        let count = self.length / MemoryLayout<SingleWord>.size
+        var wordArray = WordArray(repeating: 0, count: count)
         var tempByteRange = NSRange(location: 0, length: 1)
         
         for index in 0..<count {
@@ -232,13 +233,13 @@
     }
     
     // MARK: DoubleWord
-    public func doubleWordSequence(byteOrder byteOrder: ByteOrder = .BigEndian) throws -> AnySequence<DoubleWord> {
-        guard self.length % sizeof(DoubleWord) == 0 else {
-            throw DataError.ConversionError
+    public func doubleWordSequence(byteOrder: ByteOrder = .bigEndian) throws -> AnySequence<DoubleWord> {
+        guard self.length % MemoryLayout<DoubleWord>.size == 0 else {
+            throw DataError.conversionError
         }
         
-        let count = self.length / sizeof(DoubleWord)
-        var dWordArray = DoubleWordArray(count: count, repeatedValue: 0)
+        let count = self.length / MemoryLayout<DoubleWord>.size
+        var dWordArray = DoubleWordArray(repeating: 0, count: count)
         var tempByteRange = NSRange(location: 0, length: 1)
         
         for index in 0..<count {
@@ -254,13 +255,13 @@
     }
     
     // MARK: Long
-    public func longSequence(byteOrder byteOrder: ByteOrder = .BigEndian) throws -> AnySequence<Long> {
-        guard self.length % sizeof(Long) == 0 else {
-            throw DataError.ConversionError
+    public func longSequence(byteOrder: ByteOrder = .bigEndian) throws -> AnySequence<Long> {
+        guard self.length % MemoryLayout<Long>.size == 0 else {
+            throw DataError.conversionError
         }
         
-        let count = self.length / sizeof(Long)
-        var longArray = LongArray(count: count, repeatedValue: 0)
+        let count = self.length / MemoryLayout<Long>.size
+        var longArray = LongArray(repeating: 0, count: count)
         var tempByteRange = NSRange(location: 0, length: 1)
         
         for index in 0..<count {
@@ -284,7 +285,7 @@
         var tempBooleanArray = BooleanArray()
         var byteArray = self.byteArray
         let expectedSize: Int
-        let byteOrder = ByteOrder.BigEndian
+        let byteOrder = ByteOrder.bigEndian
         
         switch byteArray.count {
         case 1:
@@ -333,7 +334,7 @@
     
     
     // MARK: - Private Stuff
-    private func getByteAndIncreaseRangeLocation(inout range: NSRange) -> Byte {
+    fileprivate func getByteAndIncreaseRangeLocation(_ range: inout NSRange) -> Byte {
         var tempByte: Byte = 0
         self.getBytes(&tempByte, range: range)
         range.location += 1

@@ -28,13 +28,13 @@
 import Foundation
 
 public enum ByteOrder {
-    case BigEndian
-    case LittleEndian
+    case bigEndian
+    case littleEndian
 }
 
 
 extension ByteOrder {
-    func composeBytesFor(word: SingleWord) -> ByteArray {
+    func composeBytesFor(_ word: SingleWord) -> ByteArray {
         let byteArray: ByteArray = [
             Byte(word >> 8),
             Byte(word & 0x00FF)
@@ -42,7 +42,7 @@ extension ByteOrder {
         return respectByteOrder(byteArray)
     }
     
-    func composeBytesFor(dWord: DoubleWord) -> ByteArray {
+    func composeBytesFor(_ dWord: DoubleWord) -> ByteArray {
         let byteArray: ByteArray = [
             Byte(dWord >> 24),
             Byte((dWord & 0x00FF0000) >> 16),
@@ -52,7 +52,7 @@ extension ByteOrder {
         return respectByteOrder(byteArray)
     }
     
-    func composeBytesFor(long: Long) -> ByteArray {
+    func composeBytesFor(_ long: Long) -> ByteArray {
         let byteArray: ByteArray = [
             Byte(long >> 56),
             Byte((long & 0x00FF000000000000) >> 48),
@@ -66,20 +66,20 @@ extension ByteOrder {
         return respectByteOrder(byteArray)
     }
     
-    func decomposeBytes(bytes: BytesOfWord) -> SingleWord {
+    func decomposeBytes(_ bytes: BytesOfWord) -> SingleWord {
         var bytes = bytes
         
-        if self == .LittleEndian {
+        if self == .littleEndian {
             swap(&bytes.b0, &bytes.b1)
         }
         let word = SingleWord(bytes.b0) << 8 + SingleWord(bytes.b1)
         return word
     }
     
-    func decomposeBytes(bytes: BytesOfDoubleWord) -> DoubleWord {
+    func decomposeBytes(_ bytes: BytesOfDoubleWord) -> DoubleWord {
         var bytes = bytes
         
-        if self == .LittleEndian {
+        if self == .littleEndian {
             swap(&bytes.b0, &bytes.b3)
             swap(&bytes.b1, &bytes.b2)
         }
@@ -88,10 +88,10 @@ extension ByteOrder {
         return dWord1 + dWord2
     }
     
-    func decomposeBytes(bytes: BytesOfLong) -> Long {
+    func decomposeBytes(_ bytes: BytesOfLong) -> Long {
         var bytes = bytes
         
-        if self == .LittleEndian {
+        if self == .littleEndian {
             swap(&bytes.b0, &bytes.b7)
             swap(&bytes.b1, &bytes.b6)
             swap(&bytes.b2, &bytes.b5)
@@ -105,12 +105,12 @@ extension ByteOrder {
     }
     
     
-    func respectByteOrder(byteArray: ByteArray) -> ByteArray {
+    func respectByteOrder(_ byteArray: ByteArray) -> ByteArray {
         switch self {
-        case .BigEndian:
+        case .bigEndian:
             return byteArray
-        case .LittleEndian:
-            return byteArray.reverse()
+        case .littleEndian:
+            return byteArray.reversed()
         }
     }
     
