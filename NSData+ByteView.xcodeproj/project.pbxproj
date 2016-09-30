@@ -9,6 +9,23 @@
 /* Begin PBXBuildFile section */
 		271A917B1D99547F00D99816 /* Data+ByteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271A917A1D99547F00D99816 /* Data+ByteView.swift */; };
 		271A917D1D99738E00D99816 /* Data+ByteViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271A917C1D99738E00D99816 /* Data+ByteViewTests.swift */; };
+		27D72D0E1D9D624300B68745 /* NSData+ByteView.h in Headers */ = {isa = PBXBuildFile; fileRef = 27E699A81BF8B70500664C5B /* NSData+ByteView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27D72D0F1D9D624400B68745 /* NSData+ByteView.h in Headers */ = {isa = PBXBuildFile; fileRef = 27E699A81BF8B70500664C5B /* NSData+ByteView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27D72D101D9D624500B68745 /* NSData+ByteView.h in Headers */ = {isa = PBXBuildFile; fileRef = 27E699A81BF8B70500664C5B /* NSData+ByteView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		27D72D111D9D63E000B68745 /* NSData+ByteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E699BF1BF8B74100664C5B /* NSData+ByteView.swift */; };
+		27D72D121D9D63E100B68745 /* NSData+ByteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E699BF1BF8B74100664C5B /* NSData+ByteView.swift */; };
+		27D72D131D9D63E100B68745 /* NSData+ByteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E699BF1BF8B74100664C5B /* NSData+ByteView.swift */; };
+		27D72D141D9D63E600B68745 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EFF7791C042FB100AA9E1E /* Types.swift */; };
+		27D72D151D9D63E600B68745 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EFF7791C042FB100AA9E1E /* Types.swift */; };
+		27D72D161D9D63E700B68745 /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EFF7791C042FB100AA9E1E /* Types.swift */; };
+		27D72D171D9D63EB00B68745 /* ByteOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EFF77B1C04D46F00AA9E1E /* ByteOrder.swift */; };
+		27D72D181D9D63EB00B68745 /* ByteOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EFF77B1C04D46F00AA9E1E /* ByteOrder.swift */; };
+		27D72D191D9D63EC00B68745 /* ByteOrder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27EFF77B1C04D46F00AA9E1E /* ByteOrder.swift */; };
+		27D72D1A1D9D63F200B68745 /* Data+ByteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271A917A1D99547F00D99816 /* Data+ByteView.swift */; };
+		27D72D1B1D9D63F300B68745 /* Data+ByteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271A917A1D99547F00D99816 /* Data+ByteView.swift */; };
+		27D72D1C1D9D63F300B68745 /* Data+ByteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271A917A1D99547F00D99816 /* Data+ByteView.swift */; };
+		27D72D211D9D679000B68745 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 27D72D1E1D9D679000B68745 /* LICENSE */; };
+		27D72D221D9D679000B68745 /* NSData+ByteView.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 27D72D1F1D9D679000B68745 /* NSData+ByteView.podspec */; };
 		27E699A91BF8B70500664C5B /* NSData+ByteView.h in Headers */ = {isa = PBXBuildFile; fileRef = 27E699A81BF8B70500664C5B /* NSData+ByteView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		27E699B01BF8B70500664C5B /* NSData_ByteView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 27E699A51BF8B70500664C5B /* NSData_ByteView.framework */; };
 		27E699B51BF8B70500664C5B /* NSData+ByteViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27E699B41BF8B70500664C5B /* NSData+ByteViewTests.swift */; };
@@ -30,9 +47,18 @@
 /* Begin PBXFileReference section */
 		271A917A1D99547F00D99816 /* Data+ByteView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+ByteView.swift"; sourceTree = "<group>"; };
 		271A917C1D99738E00D99816 /* Data+ByteViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+ByteViewTests.swift"; sourceTree = "<group>"; };
+		27D72CE71D9C4B0700B68745 /* NSData_ByteView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NSData_ByteView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		27D72CF41D9C4B3600B68745 /* NSData_ByteView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NSData_ByteView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		27D72D011D9C4B6200B68745 /* NSData_ByteView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NSData_ByteView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		27D72D0A1D9D5F4B00B68745 /* Info-iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-iOS.plist"; sourceTree = "<group>"; };
+		27D72D0B1D9D5F4B00B68745 /* Info-macOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-macOS.plist"; sourceTree = "<group>"; };
+		27D72D0C1D9D5F4B00B68745 /* Info-tvOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-tvOS.plist"; sourceTree = "<group>"; };
+		27D72D0D1D9D5F4B00B68745 /* Info-watchOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-watchOS.plist"; sourceTree = "<group>"; };
+		27D72D1E1D9D679000B68745 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		27D72D1F1D9D679000B68745 /* NSData+ByteView.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "NSData+ByteView.podspec"; sourceTree = "<group>"; };
+		27D72D201D9D679000B68745 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		27E699A51BF8B70500664C5B /* NSData_ByteView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NSData_ByteView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		27E699A81BF8B70500664C5B /* NSData+ByteView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+ByteView.h"; sourceTree = "<group>"; };
-		27E699AA1BF8B70500664C5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27E699AF1BF8B70500664C5B /* NSData_ByteViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NSData_ByteViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		27E699B41BF8B70500664C5B /* NSData+ByteViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSData+ByteViewTests.swift"; sourceTree = "<group>"; };
 		27E699B61BF8B70500664C5B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -42,6 +68,27 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		27D72CE31D9C4B0700B68745 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27D72CF01D9C4B3600B68745 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27D72CFD1D9C4B6200B68745 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		27E699A11BF8B70500664C5B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -60,10 +107,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		27D72D091D9D5E0800B68745 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				27E699BF1BF8B74100664C5B /* NSData+ByteView.swift */,
+				27EFF7791C042FB100AA9E1E /* Types.swift */,
+				27EFF77B1C04D46F00AA9E1E /* ByteOrder.swift */,
+				271A917A1D99547F00D99816 /* Data+ByteView.swift */,
+				27E699A81BF8B70500664C5B /* NSData+ByteView.h */,
+				27D72D0A1D9D5F4B00B68745 /* Info-iOS.plist */,
+				27D72D0B1D9D5F4B00B68745 /* Info-macOS.plist */,
+				27D72D0C1D9D5F4B00B68745 /* Info-tvOS.plist */,
+				27D72D0D1D9D5F4B00B68745 /* Info-watchOS.plist */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		27D72D1D1D9D677500B68745 /* Metadata */ = {
+			isa = PBXGroup;
+			children = (
+				27D72D1E1D9D679000B68745 /* LICENSE */,
+				27D72D1F1D9D679000B68745 /* NSData+ByteView.podspec */,
+				27D72D201D9D679000B68745 /* README.md */,
+			);
+			name = Metadata;
+			sourceTree = "<group>";
+		};
 		27E6999B1BF8B70500664C5B = {
 			isa = PBXGroup;
 			children = (
-				27E699A71BF8B70500664C5B /* NSData+ByteView */,
+				27D72D1D1D9D677500B68745 /* Metadata */,
+				27D72D091D9D5E0800B68745 /* Sources */,
 				27E699B31BF8B70500664C5B /* NSData+ByteViewTests */,
 				27E699A61BF8B70500664C5B /* Products */,
 			);
@@ -74,21 +148,11 @@
 			children = (
 				27E699A51BF8B70500664C5B /* NSData_ByteView.framework */,
 				27E699AF1BF8B70500664C5B /* NSData_ByteViewTests.xctest */,
+				27D72CE71D9C4B0700B68745 /* NSData_ByteView.framework */,
+				27D72CF41D9C4B3600B68745 /* NSData_ByteView.framework */,
+				27D72D011D9C4B6200B68745 /* NSData_ByteView.framework */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		27E699A71BF8B70500664C5B /* NSData+ByteView */ = {
-			isa = PBXGroup;
-			children = (
-				27E699A81BF8B70500664C5B /* NSData+ByteView.h */,
-				27E699AA1BF8B70500664C5B /* Info.plist */,
-				27E699BF1BF8B74100664C5B /* NSData+ByteView.swift */,
-				27EFF7791C042FB100AA9E1E /* Types.swift */,
-				27EFF77B1C04D46F00AA9E1E /* ByteOrder.swift */,
-				271A917A1D99547F00D99816 /* Data+ByteView.swift */,
-			);
-			path = "NSData+ByteView";
 			sourceTree = "<group>";
 		};
 		27E699B31BF8B70500664C5B /* NSData+ByteViewTests */ = {
@@ -104,6 +168,30 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		27D72CE41D9C4B0700B68745 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27D72D0E1D9D624300B68745 /* NSData+ByteView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27D72CF11D9C4B3600B68745 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27D72D0F1D9D624400B68745 /* NSData+ByteView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27D72CFE1D9C4B6200B68745 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27D72D101D9D624500B68745 /* NSData+ByteView.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		27E699A21BF8B70500664C5B /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -115,9 +203,63 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		27E699A41BF8B70500664C5B /* NSData_ByteView */ = {
+		27D72CE61D9C4B0700B68745 /* NSData_ByteView iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 27E699B91BF8B70500664C5B /* Build configuration list for PBXNativeTarget "NSData_ByteView" */;
+			buildConfigurationList = 27D72CEC1D9C4B0700B68745 /* Build configuration list for PBXNativeTarget "NSData_ByteView iOS" */;
+			buildPhases = (
+				27D72CE21D9C4B0700B68745 /* Sources */,
+				27D72CE31D9C4B0700B68745 /* Frameworks */,
+				27D72CE41D9C4B0700B68745 /* Headers */,
+				27D72CE51D9C4B0700B68745 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "NSData_ByteView iOS";
+			productName = "NSData_ByteView iOS";
+			productReference = 27D72CE71D9C4B0700B68745 /* NSData_ByteView.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		27D72CF31D9C4B3600B68745 /* NSData_ByteView watchOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 27D72CF91D9C4B3600B68745 /* Build configuration list for PBXNativeTarget "NSData_ByteView watchOS" */;
+			buildPhases = (
+				27D72CEF1D9C4B3600B68745 /* Sources */,
+				27D72CF01D9C4B3600B68745 /* Frameworks */,
+				27D72CF11D9C4B3600B68745 /* Headers */,
+				27D72CF21D9C4B3600B68745 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "NSData_ByteView watchOS";
+			productName = "NSData_ByteView watchOS";
+			productReference = 27D72CF41D9C4B3600B68745 /* NSData_ByteView.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		27D72D001D9C4B6200B68745 /* NSData_ByteView tvOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 27D72D061D9C4B6200B68745 /* Build configuration list for PBXNativeTarget "NSData_ByteView tvOS" */;
+			buildPhases = (
+				27D72CFC1D9C4B6200B68745 /* Sources */,
+				27D72CFD1D9C4B6200B68745 /* Frameworks */,
+				27D72CFE1D9C4B6200B68745 /* Headers */,
+				27D72CFF1D9C4B6200B68745 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "NSData_ByteView tvOS";
+			productName = "NSData_ByteView tvOS";
+			productReference = 27D72D011D9C4B6200B68745 /* NSData_ByteView.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		27E699A41BF8B70500664C5B /* NSData_ByteView macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 27E699B91BF8B70500664C5B /* Build configuration list for PBXNativeTarget "NSData_ByteView macOS" */;
 			buildPhases = (
 				27E699A01BF8B70500664C5B /* Sources */,
 				27E699A11BF8B70500664C5B /* Frameworks */,
@@ -128,7 +270,7 @@
 			);
 			dependencies = (
 			);
-			name = NSData_ByteView;
+			name = "NSData_ByteView macOS";
 			productName = "NSData+ByteView";
 			productReference = 27E699A51BF8B70500664C5B /* NSData_ByteView.framework */;
 			productType = "com.apple.product-type.framework";
@@ -161,6 +303,18 @@
 				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "abigale solutions";
 				TargetAttributes = {
+					27D72CE61D9C4B0700B68745 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+					};
+					27D72CF31D9C4B3600B68745 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+					};
+					27D72D001D9C4B6200B68745 = {
+						CreatedOnToolsVersion = 8.0;
+						ProvisioningStyle = Automatic;
+					};
 					27E699A41BF8B70500664C5B = {
 						CreatedOnToolsVersion = 7.1.1;
 						LastSwiftMigration = 0800;
@@ -183,17 +337,43 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				27E699A41BF8B70500664C5B /* NSData_ByteView */,
+				27E699A41BF8B70500664C5B /* NSData_ByteView macOS */,
 				27E699AE1BF8B70500664C5B /* NSData_ByteViewTests */,
+				27D72CE61D9C4B0700B68745 /* NSData_ByteView iOS */,
+				27D72CF31D9C4B3600B68745 /* NSData_ByteView watchOS */,
+				27D72D001D9C4B6200B68745 /* NSData_ByteView tvOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		27D72CE51D9C4B0700B68745 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27D72CF21D9C4B3600B68745 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27D72CFF1D9C4B6200B68745 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		27E699A31BF8B70500664C5B /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27D72D221D9D679000B68745 /* NSData+ByteView.podspec in Resources */,
+				27D72D211D9D679000B68745 /* LICENSE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,6 +387,39 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		27D72CE21D9C4B0700B68745 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27D72D171D9D63EB00B68745 /* ByteOrder.swift in Sources */,
+				27D72D111D9D63E000B68745 /* NSData+ByteView.swift in Sources */,
+				27D72D1A1D9D63F200B68745 /* Data+ByteView.swift in Sources */,
+				27D72D141D9D63E600B68745 /* Types.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27D72CEF1D9C4B3600B68745 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27D72D181D9D63EB00B68745 /* ByteOrder.swift in Sources */,
+				27D72D121D9D63E100B68745 /* NSData+ByteView.swift in Sources */,
+				27D72D1B1D9D63F300B68745 /* Data+ByteView.swift in Sources */,
+				27D72D151D9D63E600B68745 /* Types.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		27D72CFC1D9C4B6200B68745 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27D72D191D9D63EC00B68745 /* ByteOrder.swift in Sources */,
+				27D72D131D9D63E100B68745 /* NSData+ByteView.swift in Sources */,
+				27D72D1C1D9D63F300B68745 /* Data+ByteView.swift in Sources */,
+				27D72D161D9D63E700B68745 /* Types.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		27E699A01BF8B70500664C5B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -232,12 +445,179 @@
 /* Begin PBXTargetDependency section */
 		27E699B21BF8B70500664C5B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 27E699A41BF8B70500664C5B /* NSData_ByteView */;
+			target = 27E699A41BF8B70500664C5B /* NSData_ByteView macOS */;
 			targetProxy = 27E699B11BF8B70500664C5B /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		27D72CED1D9C4B0700B68745 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Sources/Info-iOS.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.scramzer.NSData-ByteView-iOS";
+				PRODUCT_NAME = NSData_ByteView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		27D72CEE1D9C4B0700B68745 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Sources/Info-iOS.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.scramzer.NSData-ByteView-iOS";
+				PRODUCT_NAME = NSData_ByteView;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		27D72CFA1D9C4B3600B68745 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Sources/Info-watchOS.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.scramzer.NSData-ByteView-watchOS";
+				PRODUCT_NAME = NSData_ByteView;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		27D72CFB1D9C4B3600B68745 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Sources/Info-watchOS.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.scramzer.NSData-ByteView-watchOS";
+				PRODUCT_NAME = NSData_ByteView;
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+		27D72D071D9C4B6200B68745 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Sources/Info-tvOS.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.scramzer.NSData-ByteView-tvOS";
+				PRODUCT_NAME = NSData_ByteView;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Debug;
+		};
+		27D72D081D9C4B6200B68745 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Sources/Info-tvOS.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.scramzer.NSData-ByteView-tvOS";
+				PRODUCT_NAME = NSData_ByteView;
+				SDKROOT = appletvos;
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 3;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		27E699B71BF8B70500664C5B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -275,6 +655,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -316,6 +697,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
@@ -327,6 +709,7 @@
 		27E699BA1BF8B70500664C5B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -335,12 +718,12 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = "NSData+ByteView/Info.plist";
+				INFOPLIST_FILE = "Sources/Info-macOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_BUNDLE_IDENTIFIER = "de.abigale.NSData-ByteView";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "de.abigale.NSData-ByteView-macOS";
+				PRODUCT_NAME = NSData_ByteView;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -350,6 +733,7 @@
 		27E699BB1BF8B70500664C5B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -358,12 +742,12 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = "NSData+ByteView/Info.plist";
+				INFOPLIST_FILE = "Sources/Info-macOS.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
-				PRODUCT_BUNDLE_IDENTIFIER = "de.abigale.NSData-ByteView";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = "de.abigale.NSData-ByteView-macOS";
+				PRODUCT_NAME = NSData_ByteView;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 			};
@@ -396,6 +780,33 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		27D72CEC1D9C4B0700B68745 /* Build configuration list for PBXNativeTarget "NSData_ByteView iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27D72CED1D9C4B0700B68745 /* Debug */,
+				27D72CEE1D9C4B0700B68745 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		27D72CF91D9C4B3600B68745 /* Build configuration list for PBXNativeTarget "NSData_ByteView watchOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27D72CFA1D9C4B3600B68745 /* Debug */,
+				27D72CFB1D9C4B3600B68745 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		27D72D061D9C4B6200B68745 /* Build configuration list for PBXNativeTarget "NSData_ByteView tvOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				27D72D071D9C4B6200B68745 /* Debug */,
+				27D72D081D9C4B6200B68745 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		27E6999F1BF8B70500664C5B /* Build configuration list for PBXProject "NSData+ByteView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -405,7 +816,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		27E699B91BF8B70500664C5B /* Build configuration list for PBXNativeTarget "NSData_ByteView" */ = {
+		27E699B91BF8B70500664C5B /* Build configuration list for PBXNativeTarget "NSData_ByteView macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				27E699BA1BF8B70500664C5B /* Debug */,
