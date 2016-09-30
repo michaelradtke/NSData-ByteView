@@ -123,14 +123,14 @@ public extension Data {
 				tempByteStartingValue = Byte(correctedBoolCount) << 5
 				tempByteArray = ByteArray()
 			default:
-				// More than 5 booleans must be stored with the size information in dedicated bytes
+				// More than 5 booleans have to be stored along with the size information in dedicated bytes
 				tempByteStartingValue = 0
 				let byteOrder = ByteOrder.bigEndian
 				
 				switch correctedBoolCount {
 				case 0..<256:               tempByteArray = [Byte(correctedBoolCount)]
-				case 256..<65536:           tempByteArray = byteOrder.composeBytesFor(SingleWord(correctedBoolCount))
-				case 65536..<4294967296:    tempByteArray = byteOrder.composeBytesFor(DoubleWord(correctedBoolCount))
+				case 256..<65_536:          tempByteArray = byteOrder.composeBytesFor(SingleWord(correctedBoolCount))
+				case 65_536..<Int.max:		tempByteArray = byteOrder.composeBytesFor(DoubleWord(correctedBoolCount))
 				default:                    tempByteArray = byteOrder.composeBytesFor(Long(correctedBoolCount))
 				}
 			}
