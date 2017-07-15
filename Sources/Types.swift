@@ -25,22 +25,24 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
+
 public typealias Byte            = UInt8
 public typealias SingleWord      = UInt16
 public typealias DoubleWord      = UInt32
 public typealias Long            = UInt64
-
-public typealias ByteArray       = [Byte]
-public typealias WordArray       = [SingleWord]
-public typealias DoubleWordArray = [DoubleWord]
-public typealias LongArray       = [Long]
-public typealias BooleanArray    = [Bool]
 
 public enum HexStringError: Error {
     case insufficientLength
     case insufficientCharacters
 }
 
-typealias BytesOfWord            = (b0: Byte, b1: Byte)
-typealias BytesOfDoubleWord      = (b0: Byte, b1: Byte, b2: Byte, b3:Byte)
-typealias BytesOfLong            = (b0: Byte, b1: Byte, b2: Byte, b3:Byte, b4: Byte, b5: Byte, b6: Byte, b7:Byte)
+
+typealias ByteArray       = [Byte]
+typealias SingleWordArray = [SingleWord]
+typealias DoubleWordArray = [DoubleWord]
+typealias LongArray       = [Long]
+typealias BooleanArray    = [Bool]
+
+typealias BytesOfSingleWord = (b0: Byte, b1: Byte)
+typealias BytesOfDoubleWord = (b0: Byte, b1: Byte, b2: Byte, b3:Byte)
+typealias BytesOfLong       = (b0: Byte, b1: Byte, b2: Byte, b3:Byte, b4: Byte, b5: Byte, b6: Byte, b7:Byte)

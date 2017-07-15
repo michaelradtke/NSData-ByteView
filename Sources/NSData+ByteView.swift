@@ -47,21 +47,21 @@
         self.init(bytes: bytes, length: bytes.count)
     }
     
-    // MARK: Word
-    public convenience init<S: Sequence>(wordSequence: S, byteOrder: ByteOrder = .bigEndian) where S.Iterator.Element == SingleWord {
+    // MARK: SingleWord
+    public convenience init<S: Sequence>(singleWordSequence: S, byteOrder: ByteOrder = .bigEndian) where S.Iterator.Element == SingleWord {
         var tempByteArray = ByteArray()
-        for word in wordSequence {
+        for word in singleWordSequence {
 			tempByteArray.append(contentsOf: byteOrder.composeBytesFor(word))
         }
         self.init(bytes: tempByteArray, length: tempByteArray.count)
     }
     
-    public convenience init(bigEndianWords words: SingleWord...) {
-        self.init(wordSequence: words, byteOrder: .bigEndian)
+    public convenience init(bigEndianSingleWords words: SingleWord...) {
+        self.init(singleWordSequence: words, byteOrder: .bigEndian)
     }
     
-    public convenience init(litteEndianWords words: SingleWord...) {
-        self.init(wordSequence: words, byteOrder: .littleEndian)
+    public convenience init(litteEndianSingleWords words: SingleWord...) {
+        self.init(singleWordSequence: words, byteOrder: .littleEndian)
     }
     
     // MARK: DoubleWord
@@ -98,7 +98,6 @@
         self.init(longSequence: longs, byteOrder: .littleEndian)
     }
     
-
     // MARK: Bool
     public convenience init<S: Sequence>(booleanSequence: S) where S.Iterator.Element == Bool {
         var booleanArray = Array.init(booleanSequence)
@@ -185,21 +184,8 @@
         self.init(byteSequence: tempByteArray)
     }
     
-    // MARK: - Accessing Data
     
-    public var hexString: String {
-        var tempByte: Byte = 0
-        var tempByteRange = NSRange(location: 0, length: 1)
-        var hexString = ""
-        
-        for _ in 0..<self.length {
-            self.getBytes(&tempByte, range: tempByteRange)
-            hexString += String(format: "%02x", tempByte)
-            tempByteRange.location += 1
-        }
-        
-        return hexString
-    }
+    // MARK: - Accessing Data
     
     // MARK: Byte
     public var byteArray: [Byte] {
@@ -213,18 +199,18 @@
         return AnySequence(byteArray)
     }
     
-    // MARK: Word
-    public func wordSequence(byteOrder: ByteOrder = .bigEndian) throws -> AnySequence<SingleWord> {
+    // MARK: SingleWord
+    public func singleWordSequence(byteOrder: ByteOrder = .bigEndian) throws -> AnySequence<SingleWord> {
         guard self.length % MemoryLayout<SingleWord>.size == 0 else {
             throw DataError.conversionError
         }
         
         let count = self.length / MemoryLayout<SingleWord>.size
-        var wordArray = WordArray(repeating: 0, count: count)
+        var wordArray = SingleWordArray(repeating: 0, count: count)
         var tempByteRange = NSRange(location: 0, length: 1)
         
         for index in 0..<count {
-            let biw: BytesOfWord = (
+            let biw: BytesOfSingleWord = (
                 b0: getByteAndIncreaseRangeLocation(&tempByteRange),
                 b1: getByteAndIncreaseRangeLocation(&tempByteRange)
             )
@@ -333,13 +319,27 @@
         return AnySequence(tempBooleanArray)
     }
     
-    
-    // MARK: - Private Stuff
-    fileprivate func getByteAndIncreaseRangeLocation(_ range: inout NSRange) -> Byte {
+    // MARK: HexString
+    public var hexString: String {
+        var tempByte: Byte = 0
+        var tempByteRange = NSRange(location: 0, length: 1)
+        var hexString = ""
+        
+        for _ in 0..<self.length {
+            self.getBytes(&tempByte, range: tempByteRange)
+            hexString += String(format: "%02x", tempByte)
+            tempByteRange.location += 1
+        }
+        
+        return hexString
+    }
+ }
+ 
+ private extension NSData {
+    func getByteAndIncreaseRangeLocation(_ range: inout NSRange) -> Byte {
         var tempByte: Byte = 0
         self.getBytes(&tempByte, range: range)
         range.location += 1
         return tempByte
     }
-    
  }
