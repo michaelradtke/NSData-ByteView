@@ -29,10 +29,10 @@ import XCTest
 @testable import NSData_ByteView
 
 class Data_ByteViewTests: XCTestCase {
-	let byteArray: ByteArray = [0, 1, (Byte.max - 1), Byte.max]
-	let wordArray: WordArray = [1, (SingleWord.max - 1)]
-	let doubleWordArray: DoubleWordArray = [1, (DoubleWord.max - 1), 0x34dc296e]
-	let longArray: LongArray = [1, (Long.max - 1), 0x8712dc4fa30d7af9]
+	let byteArray:          ByteArray = [0, 1, (Byte.max - 1), Byte.max]
+	let singleWordArray:    SingleWordArray = [1, (SingleWord.max - 1)]
+	let doubleWordArray:    DoubleWordArray = [1, (DoubleWord.max - 1), 0x34dc296e]
+	let longArray:          LongArray = [1, (Long.max - 1), 0x8712dc4fa30d7af9]
 	
 	
 	// MARK: -
@@ -44,7 +44,7 @@ class Data_ByteViewTests: XCTestCase {
 	}
 	
 	
-	// MARK: - Test that NSData can be created from different values
+	// MARK: - Test that Data can be created from different values
 	
 	// MARK: Byte
 	func testByteCreateable_Sequence_Array() {
@@ -67,13 +67,13 @@ class Data_ByteViewTests: XCTestCase {
 	
 	// MARK: Word
 	func testWordAsBigEndianCreateable() {
-		let data = Data(wordSequence: wordArray)
+		let data = Data(singleWordSequence: singleWordArray)
 		
 		XCTAssertEqual(data.hexString, "0001fffe")
 	}
 	
 	func testWordAsLittleEndianCreateable() {
-		let data = Data(wordSequence: wordArray, byteOrder: .littleEndian)
+		let data = Data(singleWordSequence: singleWordArray, byteOrder: .littleEndian)
 		
 		XCTAssertEqual(data.hexString, "0100feff")
 	}
@@ -172,7 +172,7 @@ class Data_ByteViewTests: XCTestCase {
 	}
 	
 	
-	// MARK: - Test that values can be retored from NSData
+	// MARK: - Test that values can be retored from Data
 	
 	func testByteRestoreable() {
 		let data = Data(byteSequence: byteArray)
@@ -181,19 +181,19 @@ class Data_ByteViewTests: XCTestCase {
 	}
 	
 	func testWordAsBigEndianRestoreable() {
-		let data = Data(wordSequence: wordArray)
+		let data = Data(singleWordSequence: singleWordArray)
 		
-		let restored = try! data.wordSequence()
+		let restored = try! data.singleWordSequence()
 		
-		XCTAssertEqual(Array.init(restored), wordArray)
+		XCTAssertEqual(Array.init(restored), singleWordArray)
 	}
 	
 	func testWordAsLittleEndianRestoreable() {
-		let data = Data(wordSequence: wordArray, byteOrder: .littleEndian)
+		let data = Data(singleWordSequence: singleWordArray, byteOrder: .littleEndian)
 		
-		let restored = try! data.wordSequence(byteOrder: .littleEndian)
+		let restored = try! data.singleWordSequence(byteOrder: .littleEndian)
 		
-		XCTAssertEqual(Array.init(restored), wordArray)
+		XCTAssertEqual(Array.init(restored), singleWordArray)
 	}
 	
 	func testDoubleWordAsBigEndianRestoreable() {
@@ -280,11 +280,12 @@ class Data_ByteViewTests: XCTestCase {
 		
 		XCTAssertEqual(data.byteArray, byteArray)
 	}
-	
-	
-	// MARK: - Helper
-	var randomBoolean: Bool {
-		let randomValue = Int(arc4random_uniform(UInt32(2)))
-		return randomValue == 0 ? false : true
-	}
+}
+
+extension Data_ByteViewTests {
+    
+    var randomBoolean: Bool {
+        let randomValue = Int(arc4random_uniform(UInt32(2)))
+        return randomValue == 0 ? false : true
+    }
 }

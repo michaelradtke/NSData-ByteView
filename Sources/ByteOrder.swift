@@ -66,7 +66,7 @@ extension ByteOrder {
         return respectByteOrder(byteArray)
     }
     
-    func decomposeBytes(_ bytes: BytesOfWord) -> SingleWord {
+    func decomposeBytes(_ bytes: BytesOfSingleWord) -> SingleWord {
         var bytes = bytes
         
         if self == .littleEndian {
