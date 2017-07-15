@@ -40,30 +40,27 @@ public extension Data {
 	public init<S: Sequence>(byteSequence: S) where S.Iterator.Element == Byte {
 		let byteArray = Array.init(byteSequence)
 		self.init(bytes: byteArray)
-		//(self as NSData).init(bytes: byteArray, length: byteArray.count)
 	}
 
 	public init(bytes: Byte...) {
 		self.init(bytes: bytes)
-		//(self as NSData).init(bytes: bytes, length: bytes.count)
 	}
 
-	// MARK: Word
-	public init<S: Sequence>(wordSequence: S, byteOrder: ByteOrder = .bigEndian) where S.Iterator.Element == SingleWord {
+	// MARK: SingleWord
+	public init<S: Sequence>(singleWordSequence: S, byteOrder: ByteOrder = .bigEndian) where S.Iterator.Element == SingleWord {
 		var tempByteArray = ByteArray()
-		for word in wordSequence {
+		for word in singleWordSequence {
 			tempByteArray.append(contentsOf: byteOrder.composeBytesFor(word))
 		}
-		self.init(tempByteArray)
-		//(self as NSData).init(bytes: tempByteArray, length: tempByteArray.count)
+        self.init(bytes: tempByteArray)
 	}
 	
-	public init(bigEndianWords words: SingleWord...) {
-		self.init(wordSequence: words, byteOrder: .bigEndian)
+	public init(bigEndianSingleWords words: SingleWord...) {
+		self.init(singleWordSequence: words, byteOrder: .bigEndian)
 	}
 	
-	public init(litteEndianWords words: SingleWord...) {
-		self.init(wordSequence: words, byteOrder: .littleEndian)
+	public init(litteEndianSingleWords words: SingleWord...) {
+		self.init(singleWordSequence: words, byteOrder: .littleEndian)
 	}
 	
 	// MARK: DoubleWord
@@ -72,8 +69,7 @@ public extension Data {
 		for dWord in doubleWordSequence {
 			tempByteArray.append(contentsOf: byteOrder.composeBytesFor(dWord))
 		}
-		self.init(tempByteArray)
-		//(self as NSData).init(bytes: tempByteArray, length: tempByteArray.count)
+        self.init(bytes: tempByteArray)
 	}
 	
 	public init(bigEndianDoubleWords words: DoubleWord...) {
@@ -90,8 +86,7 @@ public extension Data {
 		for long in longSequence {
 			tempByteArray.append(contentsOf: byteOrder.composeBytesFor(long))
 		}
-		self.init(tempByteArray)
-		//(self as NSData).init(bytes: tempByteArray, length: tempByteArray.count)
+        self.init(bytes: tempByteArray)
 	}
 	
 	public init(bigEndianLongs longs: Long...) {
@@ -101,14 +96,12 @@ public extension Data {
 	public init(littleEndianLongs longs: Long...) {
 		self.init(longSequence: longs, byteOrder: .littleEndian)
 	}
-	
-	
+    
 	// MARK: Bool
 	public init<S: Sequence>(booleanSequence: S) where S.Iterator.Element == Bool {
 		var booleanArray = Array.init(booleanSequence)
 		if booleanArray.isEmpty {
 			self.init()
-			//(self as NSData).init()
 		} else {
 			var tempByteArray: ByteArray
 			let tempByteStartingValue: Byte
@@ -158,7 +151,6 @@ public extension Data {
 		self.init(booleanSequence: booleans)
 	}
 	
-	
 	// MARK: HexString
 	public init(hexString: String) throws {
 		let characterCount = hexString.characters.count
@@ -189,12 +181,9 @@ public extension Data {
 		self.init(byteSequence: tempByteArray)
 	}
 	
+    
 	// MARK: - Accessing Data
-	
-	public var hexString: String {
-		return (self as NSData).hexString
-	}
-
+    
 	// MARK: Byte
 	public var byteArray: [Byte] {
 		return (self as NSData).byteArray
@@ -204,9 +193,9 @@ public extension Data {
 		return AnySequence(byteArray)
 	}
 
-	// MARK: Word
-	public func wordSequence(byteOrder: ByteOrder = .bigEndian) throws -> AnySequence<SingleWord> {
-		return try (self as NSData).wordSequence(byteOrder: byteOrder)
+	// MARK: SingleWord
+	public func singleWordSequence(byteOrder: ByteOrder = .bigEndian) throws -> AnySequence<SingleWord> {
+		return try (self as NSData).singleWordSequence(byteOrder: byteOrder)
 	}
 	
 	// MARK: DoubleWord
@@ -223,4 +212,9 @@ public extension Data {
 	public func booleanSequence() -> AnySequence<Bool> {
 		return (self as NSData).booleanSequence()
 	}
+    
+    // MARK: HexString
+    public var hexString: String {
+        return (self as NSData).hexString
+    }
 }
