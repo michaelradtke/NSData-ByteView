@@ -2,12 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:NSData+ByteView-macOS.playground">
-   </FileRef>
-   <FileRef
-      location = "group:NSData+ByteView-iOS.playground">
-   </FileRef>
-   <FileRef
       location = "container:NSData+ByteView.xcodeproj">
    </FileRef>
 </Workspace>

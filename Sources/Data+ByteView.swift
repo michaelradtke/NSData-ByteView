@@ -153,15 +153,15 @@ public extension Data {
 	
 	// MARK: HexString
 	public init(hexString: String) throws {
-		let characterCount = hexString.characters.count
-		guard characterCount > 0 && characterCount % 2 == 0 else {
+
+		guard hexString.count > 0 && hexString.count % 2 == 0 else {
 			throw HexStringError.insufficientLength
 		}
 		
 		let regex = try! NSRegularExpression(pattern: "[0-9a-f]", options: .caseInsensitive)
 		
-		let correctCharacterCount = regex.numberOfMatches(in: hexString, options: [], range: NSMakeRange(0, characterCount))
-		if correctCharacterCount != characterCount {
+		let correctCharacterCount = regex.numberOfMatches(in: hexString, options: [], range: NSMakeRange(0, hexString.count))
+		if correctCharacterCount != hexString.count {
 			throw HexStringError.insufficientCharacters
 		}
 		
